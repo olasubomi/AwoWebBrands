@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Simple Map</title>
+<meta name="viewport" content="initial-scale=1.0">
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="header.css">
+<style>
+/* Always set the map height explicitly to define the size of the div
+ * element that contains the map. */
+#map {
+	height: 100%;
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+height: 100%;
+margin: 0;
+padding: 0;
+}
+</style>
+</head>
+<body>
+<div id ="header" class ="topnav">
+<a class="active" href="#home">Home</a>
+<a href="#">About</a>
+<input type="text" placeholder="Input a topic to search..">
+<a href="#">Be a Publisher</a>
+</div>
+<div id="map"></div>
+<script>
+var map;
+function initMap() {
+	var lagos= {lat:6.53, lng: 3.33};
+	var abuja= {lat:9.08, lng: 7.31};
+	var locations = [
+	{lat:6.53, lng: 3.33},
+	{lat:9.08, lng: 7.31},
+	{lat: 5.611105, lng: -0.669930},
+	{lat: 5.968234, lng: -8.6671},
+	{lat: 6.878409, lng: -10.865243},
+	{lat: 29.913018, lng: 30.531242},
+	{lat: 32.543084, lng: 13.041007},
+	{lat: 16.379147, lng: 32.596672},
+	{lat: 13.492171, lng: 41.825187},
+	{lat: 11.389543, lng: 42.594229},
+	{lat: 9.030970, lng: 38.825506},
+	{lat: 9.041820, lng: 38.7286689},
+	{lat: 2.187879, lng: 44.966176},
+	{lat: -1.360046, lng: 37.176869},
+	{lat: 0.332585, lng: 32.594496},
+	{lat: -2.087462, lng: 29.804741},
+	{lat: -3.411182, lng: 29.904285},
+	{lat: -4.596782, lng: 15.193837},
+	{lat: -19.174837, lng: 46.834459},
+	{lat: -26.065259, lng: 28.641100},
+	{lat: -33.860006, lng: 19.017077},
+	{lat: 34.106804, lng: -117.924967},
+	{lat: 32.749863, lng: -117.002116},
+	{lat: 47.241604, lng: -122.253214},
+	{lat: 40.705039, lng: -74.377580},
+	{lat: 39.816729, lng: -74.897265},
+	{lat: 39.992138, lng: -75.375375},
+	{lat: 33.572775, lng: -84.501043},
+	{lat: 38.907406, lng: -77.037931},
+	{lat: 51.330978, lng: -1.295181},
+	{lat: 49.023846, lng: 3.714584}
+	]
+		map = new google.maps.Map(document.getElementById('map'), {
+				//center: {lat: -34.397, lng: 150.644},
+center: {lat:0, lng: 18},
+zoom: 3, 
+styles:[
+{
+"featureType": "water",
+"stylers": [
+{ "color": "#A9A9A9" }
+]
+},{
+"featureType": "administrative",
+"stylers": [
+{ "visibility": "simplified" }
+]
+},{
+"featureType": "road",
+"stylers": [
+{ "visibility": "off" }
+]
+},{
+	"featureType": "transit",
+		"stylers": [
+		{ "visibility": "off" }
+	]
+}
+]
+});
+// label markers
+var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+// Add markers to map
+//var data_array = map.data.loadGeoJson('markers.json');
+//console.log(test);
+//window.alert(data_Array.getGeometry());
+var markers = locations.map(function(location, i) {
+		return new google.maps.Marker({
+position: location,
+//label: labels[i % labels.length]
+});
+		});
+
+
+/*var marker = new google.maps.Marker({
+position:abuja, 
+map: map
+});*/
+
+// add marker clusters
+
+var markerCluster = new MarkerClusterer(map,markers,
+		{imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+}
+</script>
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6UBg66YEIsfWJOV4dPDONpijHVnCA_U8&callback=initMap" 
+async defer></script>
+</body>
+</html>

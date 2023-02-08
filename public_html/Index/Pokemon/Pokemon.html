@@ -1,0 +1,180 @@
+<html>
+	<head>
+		<title> Pokemon Battle </title>
+		<style type = "text/css"> 
+			img{
+			height: 200px;
+			}
+
+			/* div{
+			height: 120px;
+			width: 400px;
+			border: 2px solid black;
+			} */
+
+			.button{
+			height: 50px;
+			width: 200px;
+			}
+
+			.reset_button{
+			height: 50px;
+			width: 400px;
+			}
+		</style>
+
+		<script type = "text/javascript">
+			var bulbaHP = 950;
+			var pikaHP = 1500;
+
+			var pikaAttackName = "";
+			var pikaAttackPower = 0;
+			var pikaAttackRank = 0;
+
+			var bulbaAttackRank = 0;
+			var bulbaAttackName = "";
+			var bulbaAttackPower = 0;
+			var winner_decided = 0;
+			
+			function pikaAttack(){
+				pikaAttackRank = Math.floor((Math.random()*2)+1);
+				if(pikaAttackRank == 1){
+					pikaAttackPower = 190;
+					pikaAttackName = "Thunderbolt";
+				}
+				else if (pikaAttackRank == 2){
+					pikaAttackPower = 110;
+					pikaAttackName = "Slam";
+				}
+				else if (pikaAttackRank == 3){
+					pikaAttackPower = 85;
+					pikaAttackName = "Spark";
+				}
+				else if (pikaAttackRank == 4){
+					pikaAttackPower = 70;
+					pikaAttackName = "ThunderShock";
+				}
+				
+				bulbaHP -= pikaAttackPower;
+				
+				document.getElementById("bulbaHP").innerHTML = "HP" + bulbaHP;
+				document.getElementById("screen").innerHTML += "<p>Pikachu used "
+				+ pikaAttackName+ "! Bulsabar lost "+pikaAttackPower+ "HP.</p>";
+
+				checkScores();
+			}
+			
+			function bulbaAttack(){
+				
+				bulbaAttackRank = Math.floor((Math.random()*2)+1);
+				if(bulbaAttackRank == 1){
+					bulbaAttackPower = 150;
+					bulbaAttackName = "Razor Leaf";
+				}
+				else if(bulbaAttack ==2){
+					bulbaAttackPower = 110;
+					bulbaAttackName = "Vine Whip";
+				}
+				else{}
+					pikaHP -= bulbaAttackPower;
+				
+					document.getElementById("pikaHP").innerHTML = "HP" + pikaHP;
+					document.getElementById("screen").innerHTML = "<p>Bulsabar used "
+				+ bulbaAttackName+ "! Pikachu lost "+bulbaAttackPower+ "HP.</p>";
+				
+
+			}
+
+			function checkScores(){
+				if(bulbaHP <=0 && pikaHP > 0){
+					document.getElementById("screen").innerHTML += "Pikachu wins! nice work! +" + pikaHP;
+					winner_decided = 1;
+				}
+				else if(pikaHP <=0 && bulbaPH > 0 ){
+					document.getElementById("screen").innerHTML += "Bulsbar wins.. try again- " + pikaHP;
+					winner_decided = 1;
+
+				}
+				else if(bulbaHP <=0 && pikaHP <=0){
+					document.getElementById("screen").innerHTML += "Total destruction! This is a 1 in 34 probability, you are a special one. ";
+					winner_decided = 1;
+				}
+				else{}
+
+
+			}
+
+			
+			function play(){
+				//clear screen
+				document.getElementById("screen").innerHTML = "";
+				checkScores();
+				if (winner_decided == 0){
+					bulbaAttack();
+					pikaAttack();
+				}
+				else{
+
+				}
+			}
+
+			function reset(){
+				bulbaHP = 950;
+				pikaHP = 1500;
+				
+				document.getElementById("pikaHP").innerHTML = "HP" + pikaHP;
+				document.getElementById("bulbaHP").innerHTML = "HP" + bulbaHP;
+
+				winner_decided =0;
+
+				document.getElementById("screen").innerHTML = "<br/> What will Pikachu do? ";
+
+			}
+		</script>
+		<link rel="stylesheet" href="../../components/header/header.css">
+	</head>
+
+	<body>
+		<header></header>
+		<script>
+		   fetch("../../components/header/header.html")
+			  .then(response => {
+				return response.text()
+			  })
+			  .then(data => {
+				document.querySelector("header").innerHTML = data;
+			  });
+		  </script>
+		<center>
+		<h1> Pokemon Battle: Pikachu vs. Bulbasur </h1>
+		<table> 
+			<tr>
+				<td>Bulsabar <p id = "bulbaHP">HP 950</p></td>
+				<td><img src="bulbasaur.png"></td>
+			</tr>
+			<tr>
+				<td><img src="pikachu.png"></td>
+				<td>Pikachu <p id= "pikaHP">HP 1500</p></td>
+			</tr>
+		</table>
+
+		<div id="screen">
+			<p> What will Pikachu do?</p>
+		</div>
+
+
+		<table> 
+			<tr>
+				<td><button class ="button" onclick="pikaAttackRank = 1; play();">Thunderbolt</button></td>
+				<td><button class = "button" onclick="pikaAttackRank = 2; play();">Slam</button></td>
+			</tr>
+			<tr>
+				<td><button class = "button" onclick="pikaAttackRank = 3; play();">Spark</button></td>
+				<td><button class = "button" onclick="pikaAttackRank = 4; play();">Thunder Shock</button></td>
+			</tr>
+			<tr>
+				<td colspan="2"><button class = "button reset_button" onclick="reset();">Reset</button></td>
+			</tr>
+		</table>
+	</center></body>
+</html>

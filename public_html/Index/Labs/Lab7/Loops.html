@@ -1,0 +1,43 @@
+<html>
+	<head>
+		<title> JavaScript Loops</title>
+	</head>
+	
+	<body><center>
+		<script type = "text/javascript">
+			var numLoop = 20;
+			var numPrinted = 0;
+			
+			
+			while(numPrinted < numLoop){
+				numPrinted++;
+				var text = "While loop: " + numPrinted + "</br>";
+				
+				if(numPrinted % 4 == 0){
+					document.write(text.fontcolor("red"));
+				}
+				else if(numPrinted % 2 == 0){
+					document.write(text.fontcolor("blue"));
+				}
+				else{
+					document.write(text.fontcolor("green"));
+				}
+			}
+			
+			for( numPrinted = 20; numPrinted > 0; numPrinted--){
+				var text = "For loop: " + numPrinted + "</br>";
+				
+				if(numPrinted % 4 == 0){
+					document.write(text.fontcolor("red"));
+				}
+				else if(numPrinted % 2 == 0){
+					document.write(text.fontcolor("blue"));
+				}
+				else{
+					document.write(text.fontcolor("green"));
+				}
+			}
+			
+		</script>
+	</center></body>
+</html>

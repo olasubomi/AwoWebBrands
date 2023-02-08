@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+<title> AWO Web Brands :) </title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" shrink-to-fit="no">
+
+<!-- Bootstrap CSS -->
+<!-- Replaced Bootsrap link with downloaded file -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"> -->
+<link rel="stylesheet" href="bootstrap_4_0_0_beta_2.css">
+<link href='/favicon.ico' rel='shortcut icon'>
+
+<!-- jquery for navbar dropdown submenu actions -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <!-- <link rel="javascript" href="jquery_3_2_1.js"> -->
+		<link rel="stylesheet" href="../components/header/header.css">
+		<link rel="stylesheet" href="../components/Banners/banner.css">	
+		<link rel="stylesheet" href="../components/footer/footer.css">	
+		<link rel="stylesheet" href="./index.css">	
+	</head>
+<body style="background-color: black;">
+<div>
+<header></header>
+
+	<banner></banner>
+<div class = "custom-page-content" style="padding: 7%;">
+<a id = 'welcome_note' style = "color: rgb(0,255,0); font-family: courier;"> </a>
+<a id = 'cursor' style = "color: rgb(0,255,0); font-family: courier;"> </a>
+<video style= "width:100px; height:100px;" autoplay loop>
+	<source src="../assets/videos/world-anime.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+  </video>
+<br>
+<br>
+
+</div>
+<footer></footer>
+
+<script>
+	returnComponentHTML("../components/header/header.html", "header");
+	returnComponentHTML("../components/Banners/banner.html", "banner");
+	returnComponentHTML("../components/footer/footer.html", "footer");
+
+	function returnComponentHTML(componentPath, tag){
+		fetch(componentPath)
+		.then(response => {
+		  return response.text()
+		})
+		.then(data => {
+		  document.querySelector(tag).innerHTML = data;
+		});
+	}
+</script>
+</div>
+<script>
+	text="Hello World...";
+	destination = "welcome_note";	
+	startTyping(text, 100, destination);
+
+	console.log("starts javascript");
+	var text;
+	var delay;
+	var currentChar;
+	var destination;
+	//to make sure we dont modify hello world after it has been written
+	var text_writing = 1;
+	//to create a cursor and give the illusion of a live cursor
+	var blinking_cursor = 2; 
+	function type()
+	{
+	if (document.getElementById){
+	    //var dest=document.getElementById(destination);
+	    //if (dest)
+	    //{
+		if(text_writing){
+			// console.log("Text writing is true");
+	      		document.getElementById(destination).innerHTML=text.substr(0, currentChar);
+			// console.log(document.getElementById(destination).innerHTML);
+	      		++currentChar;
+		}
+	      if (currentChar>text.length)
+	      {
+	        //currentChar-=2;
+		//console.log("reset");
+	        //setTimeout("type()", 1000);
+		//turn text writing off
+		text_writing = 0;
+		//once we have reached the third dot
+		//we want to change the focus from hello world to the cursor
+		text = "  _";
+		destination = "cursor";
+		// console.log("char is > text length");
+		if(blinking_cursor != 1){
+			blinking_cursor = 1;
+			document.getElementById(destination).innerHTML = '&nbsp';
+		}
+		else{
+			blinking_cursor = 2;
+			document.getElementById(destination).innerHTML = '_';
+		}
+		//delay = 1000;
+		//document.getElementById(destination).innerHTML = text.substr(0,blinking_cursor);
+		setTimeout("type()", 1000);
+		
+	      }
+	      else
+	      {
+		// console.log("char is " + currentChar + "length is " + text.length );
+	        setTimeout("type()", 100);
+	      }
+	    //}
+	  }
+	}
+	function startTyping(textParam, delayParam, destinationParam){
+	console.log("Comes in startTyping funtion");
+	  text=textParam;
+	  delay=delayParam;
+	  currentChar=0;
+	  destination=destinationParam;
+	  type();
+	  console.log("Called type");
+	}
+// <!-- dropdown menu togglability function on navbar -->
+	$(document).ready(function(){
+	  $('.dropdown-submenu a.test').on("click", function(e){
+	    $(this).next('ul').toggle();
+	    e.stopPropagation();
+	    e.preventDefault();
+	  });
+	});
+
+	</script>
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+	<!-- <link rel="javascript" href="4.0.0-beta.2.js"> -->
+</body>
+</html>

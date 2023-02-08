@@ -1,0 +1,181 @@
+<html class="bj_html">
+	<head>
+		<style type ="text/css">
+		
+			.body_div{
+				color: white;
+				background-image: url("./Images/Blackjack/background.jpg");
+			}
+
+			.bj_html{
+				font-family: "Lato", sans-serif;
+			}
+			.bj_table{
+				box-shadow: 2px 3px 1px #222222;
+				background: #701d15;
+				border-collapse: collapse;
+			}
+			.bj_table, .bj_table th, .bj_table td{	
+				border: 2px solid white;
+			}
+			.bj_table td{
+				width:100px;
+				height:50px;
+				text-align:center;
+			}
+			.bj_table hr{
+				width:50%;
+			}
+			.button{
+				width:120px;
+				height:50px;
+				color: white;
+				background-color: #701d15;
+				border: none;
+				box-shadow: 1px 2px 1px #222222;
+			}
+		</style>
+		<script type="text/javascript">
+			var player = 0;
+			var dealer =0;
+			var bet = 0;
+			var winnings = 0;
+			var name = "Ola";
+			
+			function showBet(){
+				document.getElementById("betId").innerHTML = "$" + bet;
+			}
+			function getBet(){
+				var value = prompt("How much money would you like to bet?");
+				bet+=parseInt(value);
+				document.getElementById("betId").innerHTML = "$" + bet;
+			}
+
+			function play(){
+				player+= Math.floor((Math.random()*11) + 1);
+				document.getElementById("playerId").innerHTML = player;
+				if(player >= 21){
+					calculateWinnings();
+				}
+			}
+			
+			function calculateWinnings(){
+				while(dealer < 18){
+					dealer+= Math.floor((Math.random()*11) + 1);
+				}
+				winnings = winnings - bet;
+				document.getElementById("dealerId").innerHTML = dealer;
+				document.getElementById("playerId").innerHTML = player;
+				
+				if(player > 21){
+					document.getElementById("resultID").innerHTML = "Busted! You lose!";
+				}
+				else if(dealer > 21 && player < 21){
+					document.getElementById("resultID").innerHTML = "Dealer Busted! "+ name + " wins!";
+					winnings += bet*2;
+				}
+				else if(player == 21){
+					document.getElementById("resultID").innerHTML = name + " got 21! " + name + " wins!";
+					winnings += bet*3;
+				}
+				else if(player > dealer){
+					document.getElementById("resultID").innerHTML = name + " wins!"
+					winnings += bet*2;
+				}
+				else if(dealer >= player){
+					document.getElementById("resultID").innerHTML = "Dealer wins!"
+				}
+				document.getElementById("winningsId").innerHTML =  "$" + winnings;
+				
+				bet =0;
+				document.getElementById("betId").innerHTML =  "$" + bet;
+			}
+			
+			function newGame(){
+				document.getElementById("playerId").innerHTML =  "";
+				document.getElementById("dealerId").innerHTML =  "";
+				document.getElementById("betId").innerHTML =  "";
+				document.getElementById("resultID").innerHTML =  "";
+				document.getElementById("winningsId").innerHTML =  "$" + winnings;
+				player=dealer=bet=0;
+			}
+			
+			function restart(){
+				winnings = 0;
+				document.getElementById("playerId").innerHTML =  "";
+				document.getElementById("dealerId").innerHTML =  "";
+				document.getElementById("betId").innerHTML =  "";
+				document.getElementById("resultID").innerHTML =  "";
+				
+				document.getElementById("winningsId").innerHTML =  "$" + winnings;
+				player=dealer=bet=0;
+			
+			}
+		</script>
+		<hr width="50%"/>
+		<link rel="stylesheet" href="./components/header/header.css">
+		<link rel="stylesheet" href="./components/footer/footer.css">
+	</head>
+	<body>
+		<div>
+			<header></header>
+		</div>
+		<div class="body_div">
+			<center>
+				<h1>Welcome to Black Jack!</h1>
+			</center>
+			<script>
+			fetch("../../../components/header/header.html")
+				.then(response => {
+					return response.text()
+				})
+				.then(data => {
+					document.querySelector("header").innerHTML = data;
+				});
+			</script>
+
+			<center>
+				<table class="bj_table">
+					<tr>
+						<th>Your Total</th>
+						<th>Dealer Total</th>
+						<th>Bet Amount</th>
+						<th>Winnings</th>
+					</tr>
+					<tr>
+						<td><p id = 'playerId'>&nbsp;</p></td>
+						<td><p id = 'dealerId'>&nbsp;</p></td>
+						<td><p id='betId'>&nbsp</p></td>
+						<td><p id = 'winningsId'>$0</p></td>
+					</tr>
+				</table>
+				<p>Game Result: <b id="resultID"></b></p>
+				<button onclick="bet+=100; showBet();">Bet $100</button>
+				<button onclick="getBet(); showBet();">Custom Bet</button>
+				<button onclick="newGame();">New Game</button>
+				<br/>
+				<br/>
+				<button onclick="play();">Hit Me</button>
+				<button onclick="calculateWinnings()">Stay</button>
+				<button onclick="restart();">Restart</button>
+			</center>
+		</div>
+		<div>
+			<footer></footer>
+
+		</div>
+		<script>
+			returnComponentHTML("../components/header/header.html", "header");
+			returnComponentHTML("../components/footer/footer.html", "footer");
+			function returnComponentHTML(componentPath, tag){
+				fetch(componentPath)
+				.then(response => {
+				  return response.text()
+				})
+				.then(data => {
+				  document.querySelector(tag).innerHTML = data;
+				});
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<html lang="en-US">>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<head>
+	<title> OLA's World :) </title>
+	<link rel="stylesheet" href="stylesheets/panel.css">
+	<style>
+		body {background-color: black;}
+
+
+		.flex-container {
+			display: -webkit-flex;
+			display: flex;
+			width: 600px;
+			height: 300px;
+			justify-content: space-between;
+			margin: auto;
+			flex-wrap: nowrap;
+			background-color: black;
+		}
+
+		.flex-item{
+			margin: 10px;
+		}
+
+		.item1{
+			width:200px;
+			height: 250px;
+
+		}
+
+		
+		.item2{
+			//float: right;
+			<!--width: 260px;-->
+			height: 250px;
+		}
+
+		#image{float: left;}
+
+		#map {
+			height: 100%;
+		}
+
+	</style>
+
+	<script>
+	
+	console.log("starts javascript");
+	var text;
+	var delay;
+	var currentChar;
+	var destination;
+	//to make sure we dont modify hello world after it has been written
+	var text_writing = 1;
+	//to create a cursor and give the illusion of a live cursor
+	var blinking_cursor = 2; 
+
+	function type()
+	{
+	if (document.getElementById)
+	{
+	    //var dest=document.getElementById(destination);
+	    //if (dest)
+	    //{
+
+		// this might be for highlighting the links on the page to
+		// open something like a mini page on spporting browsers
+		// also needs supporting plug-ins, see site for sample
+
+		// this is for the blinking cursor
+		if(text_writing){
+			console.log(document.getElementById(destination).innerHTML);
+
+	      		document.getElementById(destination).innerHTML=text.substr(0, currentChar);
+
+			console.log(document.getElementById(destination).innerHTML);
+
+	      		++currentChar;
+		}
+
+	      if (currentChar>text.length)
+	      {
+	        //currentChar-=2;
+		//console.log("reset");
+	        //setTimeout("type()", 1000);
+
+		//turn text writing off
+		text_writing = 0;
+		//once we have reached the third dot
+		//we want to change the focus from hello world to the cursor
+		text = "  _";
+		destination = "cursor";
+		if(blinking_cursor != 1){
+			blinking_cursor = 1;
+			document.getElementById(destination).innerHTML = '&nbsp';
+		}
+		else{
+			blinking_cursor = 2;
+			document.getElementById(destination).innerHTML = '_';
+		}
+		//delay = 1000;
+
+		//document.getElementById(destination).innerHTML = text.substr(0,blinking_cursor);
+
+		setTimeout("type()", 1000);
+		
+	      }
+	      else
+	      {
+		console.log("char is " + currentChar + "length is " + text.length );
+	        setTimeout("type()", 100);
+	      }
+	    //}
+	  }
+	}
+	function startTyping(textParam, delayParam, destinationParam)
+	{
+	console.log("Comes in startTyping funtion");
+	  text=textParam;
+	  delay=delayParam;
+	  currentChar=0;
+	  destination=destinationParam;
+	console.log("Calls type");
+	  type();
+
+	}
+	</script>
+</head>
+
+
+<body>
+
+<a id = 'welcome_note'; style = "color: rgb(0,255,0); font-family: courier;"> </a> <a id = 'cursor'; style = "color: rgb(0,255,0); font-family: courier;">    </a>
+
+<img src = "Images/giphy.gif" style="width:100px;height:100px;"> 
+
+<br><br>
+
+<div class="flex-container">
+
+<div class="flex-item item1">
+          <div style= "width:176px; height:30px; background-color:green"><p style= "color:red; font-size: 20px; text-align: center">Timeline</p></div>
+          <!--<br></br>-->
+          <table style="border-collapse:collapse;">
+            <thead>
+                <tr>
+                    <th colspan="2"; style="color:green; border-down: 1px solid black; text-align: center;"> &nbsp &nbsp 'My Yearly Highlights' </th>
+                </tr>
+                <tr style="border-bottom:1px solid black;">
+                    <!--<th style="padding:5px;"><em>Famous Monster</em></th>
+                    <th style="padding: 5px;border-left:1px solid black;"><em>Birth Year</em></th> -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding:5px;border-right:1px solid white; text-align:right; color: white;"><span class="has-tip tip-top noradius" data-width="210" title = "New Project: Geo Databse Collection">2017</span></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td style="padding:5px;border-left:1px solid white; text-align:left; color: white;"> <span class="has-tip tip-top noradius" data-width="210" title="Current Project">2016</span></td>     
+                </tr>
+                
+                <tr>
+                    <td style="padding:5px;border-right:1px solid white; text-align:right; color:white;"><span class="has-tip tip-top noradius" data-width="210" title = "Summer Analys Inernship"><a href="http://176.32.230.48/nigerianyouthincali.com/">2015</a></span></td>
+                    <td></td>
+                </tr>
+                
+                <tr>
+                    <td></td>
+                    <td style="padding:5px;border-left:1px solid white;text-align:left; color:white;"><span class="has-tip tip-top noradius" data-width="210" title="Global Game Jam"><a href="http://globalgamejam.org/2014/games/candy-crash">2014</a></span></td>
+                </tr>
+
+                <tr>
+		<td style="padding:5px;border-right:1px solid white; text-align:right; color:white;"><span class="has-tip tip-top noradius" data-width="210" title = "2013 Special Olympics"><a href="http://sonigeriateam.webs.com">2013</a></span></td>
+                    <td></td>
+                </tr>
+		
+
+            </tbody>
+        </table>
+        <div style= "width:176px; height:30px; background-color:green"><p style= "color:red; font-size: 20px; text-align: center"> coming soon...</p></div>
+
+</div>
+
+          <div style= "width:176px; height:30px; background-color:green"><p style= "color:red; font-size: 20px; text-align: center">Peace World.</p></div>
+
+<div class="flex-item item2">
+<div id = "map">
+<script>
+	var map;
+	function initMap() {
+        	map = new google.maps.Map(document.getElementById('map'), {
+          	center: {lat: -34.397, lng: 150.644},
+        	  zoom: 5 
+       		});
+     	 }
+</script>
+<!-- script tag is the location of a JavaScript file that loads all of the 
+symbols and definitions you need for using the Maps JavaScript API.The 
+async attribute lets the browser render the rest of your website while the 
+Maps JavaScript API loads. When the API is ready, it will call the function
+specified using the callback parameter. -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6UBg66YEIsfWJOV4dPDONpijHVnCA_U8&callback=initMap"
+async defer></script>
+</script>
+
+
+
+</div>
+</div>
+</div>
+<br>
+<br>
+
+<div>
+            <a href="https://www.facebook.com/subomi.awokoya"><img src="Images/facebook.png" width="50" height="50" ></a>
+            <a href="https://twitter.com/@SubomiFiascoooo"><img src="Images/twitter.png"width="50" height="50"></a>
+            <a href="http://linkedin.com/in/olasubomi-awokoya"><img src="Images/linkedin_logo.png"width="55" height="55"></a>
+
+</div>
+
+<script>
+
+text="Hello World...";
+destination = "welcome_note";
+startTyping(text, 100, destination);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<html>
+
+	<head>
+		<title> Coachella </title>
+		
+	</head>
+
+	
+	<body>
+		<center>
+		<script type="text/javascript"> 
+			var attending;
+		
+			attending = prompt("Are you planning on attending Coachella??");
+			
+			if(attending == "yes"){
+				var weekend = prompt("Are you going to weekend 1 or 2?");
+				if(weekend == "one"){
+					document.write("I wonder who the special guest will be!");
+				}
+				else if(weekend == "two"){
+					document.write("There wont be any suprises for you");
+				
+				}
+				else {
+					document.write("Wow, that will be fun!");
+				}
+			}
+			else if (attending == "no"){
+				var interest = prompt("Do you want to go to Coachella?");
+				
+				if(interest == "yes")
+					document.write("Maybe next year!");
+				if(interest == "no")
+					document.write("At least you're saving money!");
+			}
+			
+		</script>
+		</center>
+	</body>
+
+
+</html>

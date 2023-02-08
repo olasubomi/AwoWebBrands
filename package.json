@@ -1,0 +1,48 @@
+{
+  "name": "Awo-Website",
+  "version": "0.3.0",
+  "description": "website to showcase some of the skills I am learning over the next few months",
+  "engines": {
+    "node": "16.x"
+  },
+  "main": "index.js",
+  "scripts": {
+    "heroku-prebuild": "echo This runs before Heroku installs your dependencies.",
+    "heroku-postbuild": "echo This runs afterwards.",
+    "start": "node index.js",
+    "test": "node test.js"
+  },
+  "dependencies": {
+    "@vonage/server-sdk": "^2.11.2",
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-react-app": "^3.1.2",
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "ejs": "^2.5.6",
+    "express": "^4.16.3",
+    "jsx": "^0.9.89",
+    "nodemailer": "^6.7.0",
+    "npm": "^6.1.0",
+    "pg": "^7.4.3",
+    "react-jsx": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19",
+    "request": "^2.81.0",
+    "tape": "^4.7.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/olasubomi/Personal-Website.git"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
+}

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title> 
+		Olasubomi Awokoya
+		</title>
+    <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+	-->
+
+    <link rel="manifest" href="./manifest.json">
+	<link rel="shortcut icon" href="./favicon.ico">
+	 <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+	-->
+	
+		<!-- Add Bootstrap met tags for proper responsive behaviours-->
+		<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<!-- Add bootstrap stylesheet to load bootstrap CSS -->
+		<!-- <link href="./bootstrap-4/css/bootstrap.min.css" rel="stylesheet">-->
+
+		<!-- Perhaps add to the header -->
+		<!-- // now CSS stylesheet with id "#common-css" will be loaded and styles applied -->
+		<!-- <script>
+			document.querySelector("#common-css").removeAttribute('disabled');
+		</script> -->
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous" > 
+		<link rel="stylesheet" href="../components/header/header.css">
+		<link rel="stylesheet" href="../components/footer/footer.css">	
+		<!-- overwrite bootstraps body bg color-->
+		<style> 
+			body{background-color: black;;}
+			matrix{
+				-webkit-transform: rotate(45deg);
+				transform: rotate(45deg);
+			}
+		</style>
+	</head>
+	
+	<body style="background-color: black;">
+		<header></header>
+		<div style="text-align:center">
+
+  <!-- Navbar content -->
+  <!-- <header></header> -->
+  <script>
+	 fetch("components/header/header.html")
+		.then(response => {
+		  return response.text()
+		})
+		.then(data => {
+		  document.querySelector("header").innerHTML = data;
+		});
+	</script>
+<!-- <nav class="navbar sticky-top navbar-dark bg-dark" >
+<a class="navbar-brand" href="#">Home</a>
+<a class="navbar-brand" href="./Index/index.html">Index_Page</a>
+<a class="navbar-brand" href="/index.html">Custom Page > </a>
+</nav> -->
+
+			<h1 style="color:#00FFFF">Olasubomi Awokoya</h1>
+			<table  style="border:1px">
+				<tr>
+					<td style="background-color:#162252">  
+						<h4 style="color:yellow">Hello World, </h4>
+					<br/><br/>
+					<p style="color:yellow">
+						Subomi is a Lead executive director of Awokorp Ventures. Subomi or Ola, is a graduate from University of California, San Diego, where he studied Computer Science, with a minor in Enterpreneurship & Innovation. He has worked as a serial entrepreneur working on digital projects, has worked as an analyst at Goldman Sachs, and a software Contractor for over 2 years. He is now a Software Engineer at a tech startup in San Diego.
+					<br/><br/> <b>CLICK</b> on the matrix graphic to open my customized home page...</p> </td>
+					
+					<td> <img src="assets/img/about-us/nsbe_potrait_photo.jpeg" style="width:100%" alt="potrait image of OLasubomi Awokoya at a NSBE conference"> </td>
+				</tr>	
+				<tr>	
+					<td style="background-color:#000000" colspan="2">
+						<p style="text-align:center; color:white">
+							open Custom page >>>
+							<a href= "index.html"></a>
+							</p>
+							<img src="Images/giphy-downsized.gif" alt="matrix"  style="min-height:100%" />
+
+					</td>
+				</tr>	
+
+		 	</table>
+			</div>
+
+		<script>
+			fetch("/components/footer/footer.html")
+				.then(response => {
+				  return response.text()
+				})
+				.then(data => {
+				  document.querySelector("footer").innerHTML = data;
+				});
+			  </script>
+<footer></footer>
+	<!-- Add source for bootstraps javascript components
+		such as buttons, toggles, dropdowns etc  -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+	<!--<script> <link href="./bootstrap-4/css/bootstrap.min.js" rel="stylesheet"></script>-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+	</body>
+</html>
