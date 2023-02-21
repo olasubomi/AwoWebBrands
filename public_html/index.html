@@ -172,8 +172,9 @@
     left: 0;
 
   }
-  .wp-block-cover__image-background.wp-image-143.has-parallax{
-      height: 100%;
+
+  .wp-block-cover__image-background.wp-image-143.has-parallax {
+    height: 100%;
     background-size: cover;
     background-position: center;
     position: absolute;
@@ -201,6 +202,7 @@
     bottom: 0;
     background: rgba(0, 0, 0, .2);
   }
+
   .test3:before {
     content: "";
     position: absolute;
@@ -234,14 +236,70 @@
     background-color: #000000;
     opacity: .6;
   }
-  .wp-block-cover.is-light .wp-block-cover__inner-container{
+
+  .wp-block-cover.is-light .wp-block-cover__inner-container {
     color: #000000;
   }
-  @media only screen and (max-width: 500px) {
+
+  .wp-block-cover.alignfull.has-parallax.is-style-default {
+    min-height: 330px;
+  }
+
+  .em2 {
+    display: none;
+  }
+
+  .wp-block-cover.alignfull.has-parallax.is-style-default .text-container {
+    top: 15%;
+  }
+
+  .wp-block-cover.alignfull.is-light.has-parallax .text-container {
+    top: 6%;
+  }
+
+  .wp-block-cover.alignfull.is-light.has-parallax {
+    min-height: 273px;
+  }
+
+  .wp-block-cover.alignfull.has-parallax .text-container {
+    top: 30%;
+  }
+
+  @media only screen and (max-width: 375px) {
     .wp-block-cover__image-background.has-parallax {
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
+    }
+
+    .wp-block-cover.alignfull.has-parallax.is-style-default {
+      min-height: 510px;
+    }
+
+    .wp-block-cover.alignfull.has-parallax .text-container {
+      top: 19%;
+    }
+
+    .em1 {
+      display: none;
+    }
+
+    .em2 {
+      display: block;
+    }
+
+    .wp-block-cover.alignfull.has-parallax.is-style-default .text-container {
+      top: 3.5%;
+    }
+
+    .wp-block-cover.alignfull.is-light.has-parallax {
+      min-height: 330px;
+    }
+
+    .wp-block-separator.has-css-opacity.down {
+      margin-top: 22%;
+      background-color: black;
+      z-index: 2;
     }
 
   }
@@ -303,7 +361,7 @@
 
             <div class="entry-content">
               <div class="wp-block-cover alignfull has-parallax is-style-default"
-                style="min-height: 319px; position: relative; background-color: rgba(0, 0, 0, 1);" id="About">
+                style=" position: relative; background-color: rgba(0, 0, 0, 1);" id="About">
                 <span aria-hidden="true"
                   class="wp-block-cover__background has-background-dim-60 has-background-dim"></span>
 
@@ -312,11 +370,15 @@
                     style="background-image: url('./assets/img/home-page/pixlr_web_chart.jpg');">
                   </div>
                 </div>
-                <div class="text-container" style="height: 90%; width: 90%; position: absolute; top: 15%; z-index: 20; margin: 0 auto;">
+                <div class="text-container"
+                  style="height: 90%; width: 90%; position: absolute; z-index: 200; margin: 0 auto;">
                   <div class="wp-block-cover__inner-container" style="  width: 100%;">
                     <h1 class="has-text-align-center has-white-color has-text-color" style="text-align: center;">
-                      <em>At Awo Brands, we help you build and manage the online
+                      <em class="em1">At Awo Brands, we help you build and manage the online
                         presence of your business.
+                      </em>
+                      <em class="em2">At Awo<br> Brands, we<br> help you<br> build and <br> manage the <br> online<br>
+                        presence of<br> your<br> business.
                       </em>
                     </h1>
                   </div>
@@ -335,8 +397,7 @@
 
               <hr class="wp-block-separator has-alpha-channel-opacity" />
 
-              <div class="wp-block-cover alignfull is-light has-parallax" style="min-height: 273px; position: relative;"
-                id="Services">
+              <div class="wp-block-cover alignfull is-light has-parallax" style=" position: relative;" id="Services">
                 <span aria-hidden="true" class="wp-block-cover__background has-background-dim-20 has-background-dim"
                   style="background-color: #000000"></span>
                 <div class="imago">
@@ -345,8 +406,9 @@
                     "></div>
                 </div>
                 <div class="text-container"
-                  style="height: 90%; width: 90%; position: absolute; top: 6%; z-index: 20; margin: 0 auto; left: 5%;">
-                  <div class="wp-block-cover__inner-container" style="position: relative; height: 90%; color: #000000; width: 100%;">
+                  style="height: 90%; width: 90%; position: absolute; z-index: 20; margin: 0 auto; left: 5%;">
+                  <div class="wp-block-cover__inner-container"
+                    style="position: relative; height: 90%; color: #000000; width: 100%;">
                     <hr class="wp-block-separator has-css-opacity" />
 
                     <h1 class="has-text-align-center has-text-color" style="
@@ -356,10 +418,12 @@
                           text-align: center;
                           z-index: 1000;
                         ">
-                      <em>Let&#8217;s build something great together.</em>
+                      <em class="em1">Let&#8217;s build something great together.</em>
+                      <em class="em2">Let&#8217;s build<br> something<br> great <br> together.</em>
+
                     </h1>
 
-                    <hr class="wp-block-separator has-css-opacity" />
+                    <hr class="wp-block-separator has-css-opacity down" />
                   </div>
                 </div>
 
@@ -405,7 +469,8 @@
 
               <hr class="wp-block-separator has-alpha-channel-opacity" />
 
-              <div class="wp-block-cover alignfull has-parallax" style="min-height: 270px; position: relative;" id="Testimonials">
+              <div class="wp-block-cover alignfull has-parallax" style="min-height: 270px; position: relative;"
+                id="Testimonials">
                 <span aria-hidden="true" class="wp-block-cover__background has-background-dim-20 has-background-dim"
                   style="background-color: #000000"></span>
                 <div class="imago">
@@ -413,10 +478,14 @@
                       background-image: url('./assets/img/home-page/client_stock_photo.jpeg');
                     "></div>
                 </div>
-                <div class="text-container" style="height: 90%; width: 90%; position: absolute; top: 30%; left: 5%; z-index: 20; margin: 0 auto;">
+                <div class="text-container"
+                  style="height: 90%; width: 90%; position: absolute; left: 5%; z-index: 20; margin: 0 auto;">
                   <div class="wp-block-cover__inner-container" style="  width: 100%;">
-                    <h1 class="has-text-align-center has-white-color has-text-color" style="text-align: center; z-index: 1;">
-                      <em>Hear from our Clients
+                    <h1 class="has-text-align-center has-white-color has-text-color"
+                      style="text-align: center; z-index: 1;">
+                      <em class="em1">Hear from our Clients
+                      </em>
+                      <em class="em2">Hear from<br> our Clients
                       </em>
                     </h1>
                   </div>
@@ -534,17 +603,18 @@
                       background-image: url('./assets/img/home-page/pexels-pixabay-4158.jpeg');
                     "></div>
                 </div>
-                <div class="text-container" style="height: 90%; width: 60%;position: relative; padding-top: 1%; margin: 0 auto;">
+                <div class="text-container"
+                  style="height: 90%; width: 60%;position: relative; padding-top: 1%; margin: 0 auto;">
                   <div class="wp-block-cover__inner-container">
                     <h4 class="has-text-align-center" style="text-align: center; color: #fff;">
                       <em><strong>Awo Web Brands</strong></em>
                     </h4>
-  
-                    <p class="has-text-align-center"  style="text-align: center; color: #fff;">
+
+                    <p class="has-text-align-center" style="text-align: center; color: #fff;">
                       Choose AWO Web Services, for your Digital Marketing, Web
                       Design and Process Management&nbsp;needs.
                     </p>
-  
+
                     <div class="footer-wrap">
                       <div class="container">
                         <div class="footer">
@@ -598,14 +668,14 @@
                                             </div>
                                             <div class="wsite-social wsite-social-default">
                                               <div id="copyright" class="text-center"></div>
-  
-                                                          <a class=" first-child wsite-social-item"
+
+                                              <a class=" first-child wsite-social-item"
                                                 href="https://www.facebook.com/AWO-Web-Brands-105999384910916/"
                                                 target="_blank" title="Facebook"><img
                                                   src="assets/img/footer/facebook_icon_25_x_25_at_72dpi.png"
                                                   alt="facebook_icon" width="30" height="30"> </a> &nbsp;
-                                              </div>
-                                              <!-- <a href="#" style="font-size: 11px;">Review privacy policy.</a> -->
+                                            </div>
+                                            <!-- <a href="#" style="font-size: 11px;">Review privacy policy.</a> -->
                                           </td>
                                         </tr>
                                       </tbody>
@@ -618,7 +688,8 @@
                               </table>
                             </div>
                           </div>
-                          <div class="paragraph > <span class=" text10" style="color:white">AWO Web Brands is a registered
+                          <div class="paragraph > <span class=" text10" style="color:white">AWO Web Brands is a
+                            registered
                             LLC, by the California Secretary of State</span>
                           </div>
                         </div>
