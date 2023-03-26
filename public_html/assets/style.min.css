@@ -3369,8 +3369,7 @@ h2 {
     }
 }
 
-@media print,
-projection {
+@media print {
     .str {
         color: #060
     }
@@ -3726,7 +3725,7 @@ body.wsite-checkout-page .dusk-header {
     transition: transform .3s ease-out;
     -webkit-transition: opacity .6s ease-in .3s transform .3s ease-out;
     -o-transition: opacity .6s ease-in .3s transform .3s ease-out;
-    transition: opacity .6s ease-in .3s transform .3s ease-out;
+    /* transition: opacity .6s ease-in .3s transform .3s ease-out; */
     position: relative;
     width: 100%;
     z-index: 13;
@@ -3823,9 +3822,9 @@ body.header-compressed .dusk-header .container {
     }
 }
 
-.dusk-header .logo .wsite-logo {
+/* .dusk-header .logo .wsite-logo {
     vertical-align: auto !important
-}
+} */
 
 .dusk-header .logo a {
     font-family: Poppins, sans-serif;
@@ -4694,9 +4693,9 @@ div.paragraph ol li {
     width: device-width
 }
 
-@viewport {
+/* @viewport {
     width: device-width
-}
+} */
 
 #wsite-content .wsite-form-field label,
 #wsite-content div.paragraph,
