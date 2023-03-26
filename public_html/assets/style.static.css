@@ -4464,11 +4464,8 @@ article .entry-header .entry-title a:hover,
 }
 
 #wp-admin-bar-notes #wpnt-notes-unread-count.wpn-read {
-    background: -ms-linear-gradient ( to bottom, #4a4a4a, #959595) !important;
-    background: -moz-linear-gradient(to bottom, #959595, #4a4a4a) !important;
-    background: -webkit-gradient(linear, left bottom, left top, from(#4a4a4a), to(#959595)) !important;
-    background: -webkit-linear-gradient(bottom, #959595, #4a4a4a) !important;
-    background: linear-gradient(to bottom, #4a4a4a, #959595) !important;
+    
+    background: teal !important;
     -moz-box-shadow: inset 0 0 10px rgba(0, 0, 0, .8);
     -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, .8);
     box-shadow: inset 0 0 10px rgba(0, 0, 0, .8)
@@ -4477,22 +4474,13 @@ article .entry-header .entry-title a:hover,
 #wp-admin-bar-notes.wpnt-stayopen #wpnt-notes-unread-count.wpn-read,
 #wp-admin-bar-notes:hover #wpnt-notes-unread-count.wpn-read,
 #wp-admin-bar-notes.wpnt-hover #wpnt-notes-unread-count.wpn-read {
-    background: -ms-linear-gradient(to bottom, #d3d3d3, #e7e7e7) !important;
-    background: -moz-linear-gradient(to bottom, #e7e7e7, #d3d3d3) !important;
-    background: -webkit-gradient(linear, left bottom, left top, from(#d3d3d3), to(#e7e7e7)) !important;
-    background: -webkit-linear-gradient(to bottom, #e7e7e7, #d3d3d3) !important;
-    background: linear-gradient(to bottom, #d3d3d3, #e7e7e7) !important;
+    background: red !important;
     -moz-box-shadow: inset 0 0 5px rgba(0, 0, 0, .2);
     -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, .2);
     box-shadow: inset 0 0 5px rgba(0, 0, 0, .2)
 }
 
 #wp-admin-bar-notes #wpnt-notes-unread-count.wpn-unread {
-    background: -ms-linear-gradient(to bottom, #f7941e, #d47300) !important;
-    background: -moz-linear-gradient(to bottom, #f7941e, #d47300) !important;
-    background: -webkit-gradient(linear, left bottom, left top, from(#f7941e), to(#d47300)) !important;
-    background: -webkit-linear-gradient(to bottom, #f7941e, #d47300) !important;
-    background: linear-gradient(to bottom, #f7941e, #d47300) !important;
     background-color: #d47300 !important;
     -moz-box-shadow: inset 0 0 5px rgba(0, 0, 0, .5);
     -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, .5);
