@@ -655,73 +655,6 @@
 
   <!--  -->
 
-  <script>
-    window._tkq = window._tkq || [];
-    if (Math.random() < 0.01) {
-      window._tkq.push([
-        "recordEvent",
-        "wpcom_wordads_noad",
-        {
-          theme: "pub\/hever",
-          blog_id: 187720281,
-          reason_notpublic: 1,
-          reason_blog_unsafe: 1,
-        },
-      ]);
-    }
-  </script>
-
-  <script src="//0.gravatar.com/js/gprofiles.js?ver=202236z" id="grofiles-cards-js"></script>
-  <script id="wpgroho-js-extra">
-    var WPGroHo = { my_hash: "d8b6f5d6c85dca0ad4ef137b75c1b177" };
-  </script>
-  <script crossorigin="anonymous"
-    src="https://s0.wp.com/wp-content/mu-plugins/gravatar-hovercards/wpgroho.js?m=1610363240h"></script>
-
-  <script>
-    // Initialize and attach hovercards to all gravatars
-    (function () {
-      function init() {
-        if (typeof Gravatar === "undefined") {
-          return;
-        }
-
-        if (typeof Gravatar.init !== "function") {
-          return;
-        }
-
-        Gravatar.profile_cb = function (hash, id) {
-          WPGroHo.syncProfileData(hash, id);
-        };
-
-        Gravatar.my_hash = WPGroHo.my_hash;
-        Gravatar.init("body", "#wp-admin-bar-my-account");
-      }
-
-      if (document.readyState !== "loading") {
-        init();
-      } else {
-        document.addEventListener("DOMContentLoaded", init);
-      }
-    })();
-  </script>
-
-  <script>
-    window.addEventListener("load", function (event) {
-      var link = document.createElement("link");
-      link.href =
-        "https://s0.wp.com/wp-content/mu-plugins/actionbar/actionbar.css?v=20210915";
-      link.type = "text/css";
-      link.rel = "stylesheet";
-      document.head.appendChild(link);
-
-      var script = document.createElement("script");
-      script.src =
-        "https://s0.wp.com/wp-content/mu-plugins/actionbar/actionbar.js?v=20220329";
-      script.defer = true;
-      document.body.appendChild(script);
-    });
-  </script>
 
   <div id="jp-carousel-loading-overlay">
     <div id="jp-carousel-loading-wrapper">
@@ -924,6 +857,73 @@
     };
   </script>
 
+<script>
+  window._tkq = window._tkq || [];
+  if (Math.random() < 0.01) {
+    window._tkq.push([
+      "recordEvent",
+      "wpcom_wordads_noad",
+      {
+        theme: "pub\/hever",
+        blog_id: 187720281,
+        reason_notpublic: 1,
+        reason_blog_unsafe: 1,
+      },
+    ]);
+  }
+</script>
+
+<script src="//0.gravatar.com/js/gprofiles.js?ver=202236z" id="grofiles-cards-js"></script>
+<script id="wpgroho-js-extra">
+  var WPGroHo = { my_hash: "d8b6f5d6c85dca0ad4ef137b75c1b177" };
+</script>
+<script crossorigin="anonymous"
+  src="https://s0.wp.com/wp-content/mu-plugins/gravatar-hovercards/wpgroho.js?m=1610363240h"></script>
+
+<script>
+  // Initialize and attach hovercards to all gravatars
+  (function () {
+    function init() {
+      if (typeof Gravatar === "undefined") {
+        return;
+      }
+
+      if (typeof Gravatar.init !== "function") {
+        return;
+      }
+
+      Gravatar.profile_cb = function (hash, id) {
+        WPGroHo.syncProfileData(hash, id);
+      };
+
+      Gravatar.my_hash = WPGroHo.my_hash;
+      Gravatar.init("body", "#wp-admin-bar-my-account");
+    }
+
+    if (document.readyState !== "loading") {
+      init();
+    } else {
+      document.addEventListener("DOMContentLoaded", init);
+    }
+  })();
+</script>
+
+<script>
+  window.addEventListener("load", function (event) {
+    var link = document.createElement("link");
+    link.href =
+      "https://s0.wp.com/wp-content/mu-plugins/actionbar/actionbar.css?v=20210915";
+    link.type = "text/css";
+    link.rel = "stylesheet";
+    document.head.appendChild(link);
+
+    var script = document.createElement("script");
+    script.src =
+      "https://s0.wp.com/wp-content/mu-plugins/actionbar/actionbar.js?v=20220329";
+    script.defer = true;
+    document.body.appendChild(script);
+  });
+</script>
   <script id="jetpack-carousel-js-extra">
     var jetpackSwiperLibraryPath = {
       url: "https:\/\/s0.wp.com\/wp-content\/mu-plugins\/jetpack-plugin\/production\/_inc\/build\/carousel\/swiper-bundle.min.js",
