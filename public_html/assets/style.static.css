@@ -21,7 +21,7 @@
     --wp--preset--color--alert-warning: #ecc700;
     --wp--preset--color--alert-error: #de3e33;
     --wp--preset--color--black: #000;
-    --wp--preset--color--white: #fff
+    --wp--preset--color--white: #fff;
 }
 
 button[data-load-more-btn],
@@ -4744,13 +4744,11 @@ p.wpnt-ie-note a {
 }
 
 .reblog-post .wpcom-enhanced-excerpt address,
-.reblog-post .wpcom-enhanced-excerpt li,
-.reblog-post .wpcom-enhanced-excerpt h1,
-.reblog-post .wpcom-enhanced-excerpt h2,
-.reblog-post .wpcom-enhanced-excerpt h3,
-.reblog-post .wpcom-enhanced-excerpt h4,
-.reblog-post .wpcom-enhanced-excerpt h5,
-.reblog-post .wpcom-enhanced-excerpt h6,
+.reblog-post .wpcom-enhanced-excerpt,
+.reblog-post .wpcom-enhanced-excerpt,
+.reblog-post .wpcom-enhanced-excerpt,
+.reblog-post .wpcom-enhanced-excerpt,
+.reblog-post .wpcom-enhanced-excerpt,
 .reblog-post .wpcom-enhanced-excerpt p {
     font-size: 100% !important
 }
