@@ -110,7 +110,7 @@
       width: 100%;
       right: 0;
       left: 0;
-      background-attachment: scroll;
+      background-attachment: fixed;
     }
     .wp-block-cover__image-background.wp-image-143.hasparallax {
       height: 100%;
@@ -204,8 +204,11 @@
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
+        background-attachment: scroll;
       }
-
+      .wp-block-cover__image-background.wp-image-143.hasparallax {
+      background-attachment: scroll;
+    }
       .wp-block-cover.alignfull.hasparallax.is-style-default {
         min-height: 510px;
       }
