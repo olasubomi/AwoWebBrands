@@ -31,7 +31,6 @@
     "react-jsx": "^1.0.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.19",
     "request": "^2.81.0",
     "tape": "^4.7.0"
   },
