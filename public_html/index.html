@@ -624,8 +624,9 @@
       function dynamicCopyRight() {
         const currentDate = new Date();
         var copyright_string = "© COPYRIGHT " + currentDate.getFullYear() + ". ALL RIGHTS RESERVED."
-        document.getElementById("copyright").innerText = copyright_string;
-        copyright_string.classList.add("copyright")
+       var doc = document.getElementById("copyright");
+       doc.innerText = copyright_string;
+       doc.classList.add("copyright")
       }
     </script>
   <script>
