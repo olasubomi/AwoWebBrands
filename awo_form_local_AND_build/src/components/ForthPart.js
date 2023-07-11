@@ -592,12 +592,12 @@ class ForthPart extends React.Component {
         <div className="saveMoneyBox">
           <div className="row">
             <div className="col-md-8 offset-md-2">
-              <h1 className='text-white text-center mb-3'>Schedule a Consultation</h1>
+              <h1 className='text-white text-center mb-3'>To book a Consultation, fill this form and we will reach out to You!</h1>
               <div className="card border-0 rounded-0">
                 <div className="card-body">
-                  <div className="text-center">
-                    <p className='font-weight-bold light mb-2'>To book a service, fill this form and we will get back with you!</p>
-                  </div>
+                  {/* <div className="text-center">
+                    <p className='font-weight-bold light mb-2'></p>
+                  </div> */}
                   <form>
                     <div className="row">
                       <div className="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
