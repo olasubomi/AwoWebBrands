@@ -1,0 +1,12 @@
+print("Hello World!")
+my_name = input("What is your name? ")
+print("hello " + my_name)
+college = input("What college are you in? ")
+major = input("What is your major? ")
+print("Your college is " + college + " and your major is " + major)
+
+print("The places that you would like to visit are:")
+places = ["Egypt", "Ghana", "Ethiopia", "Kenya"]
+
+for place in places:
+    print (place)

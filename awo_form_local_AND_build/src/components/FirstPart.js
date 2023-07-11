@@ -1,5 +1,4 @@
 import React from 'react';
-import MakelloSlider from './MakelloSlider';
 import service from './dataService';
 
 const min_slider_value = 50;
@@ -9,9 +8,9 @@ const slider_increment_step = 25;
 
 class FirstPart extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
+    constructor(props) {
+        super(props);
+        this.state = {
             popoverOpen1: false,
             popoverOpen2: false,
             popoverOpen3: false,
@@ -23,46 +22,46 @@ class FirstPart extends React.Component {
             showTooltip: {
                 hidden: ''
             },
-            clientProfile: {...service.data.clientProfile},
-            chartData: {...service.data.chartData}
+            clientProfile: { ...service.data.clientProfile },
+            chartData: { ...service.data.chartData }
         };
 
-    this.toggleModal = this.toggleModal.bind(this);
-    service.onValuesChanged(this.dataCenterDataChange.bind(this));
+        this.toggleModal = this.toggleModal.bind(this);
+        service.onValuesChanged(this.dataCenterDataChange.bind(this));
 
-  }
+    }
 
-  dataCenterDataChange(data) {
-    this.setState({
-        lightboxIsOpen: {...data.lightboxIsOpen},
-        clientProfile: {...data.clientProfile},
-        chartData: {...data.chartData},
-        showFirstPart: data.showFirstPart
-    });
-  }
+    dataCenterDataChange(data) {
+        this.setState({
+            lightboxIsOpen: { ...data.lightboxIsOpen },
+            clientProfile: { ...data.clientProfile },
+            chartData: { ...data.chartData },
+            showFirstPart: data.showFirstPart
+        });
+    }
 
-  getChartData(monthlyBill){
-    service.resetOptimalSystem()
-    var bill_input = Number(monthlyBill);
-    var annual_bill = bill_input * 12;
-    var bucket = 500;
-    if (annual_bill < 1000)
-        bucket = 500;
-    else
-        bucket = Math.floor(annual_bill / 1000) * 1000;
+    getChartData(monthlyBill) {
+        service.resetOptimalSystem()
+        var bill_input = Number(monthlyBill);
+        var annual_bill = bill_input * 12;
+        var bucket = 500;
+        if (annual_bill < 1000)
+            bucket = 500;
+        else
+            bucket = Math.floor(annual_bill / 1000) * 1000;
 
-    this.setChartSeriesData(bucket);
-};
+        this.setChartSeriesData(bucket);
+    };
 
-  setChartSeriesData(bucket, chartData) {
-    var url = "../api2/chartdata.php/?input_bill=" + bucket;
-    fetch(url).then((response) => {
+    setChartSeriesData(bucket, chartData) {
+        var url = "../api2/chartdata.php/?input_bill=" + bucket;
+        fetch(url).then((response) => {
             return response.text()
         }).then((response_in_text) => {
             return JSON.parse(response_in_text)
         }).then((data) => {
-            console.log("Returned data from php: "+ data);
-            var chartDataTmp =  { ...this.state.chartData };
+            console.log("Returned data from php: " + data);
+            var chartDataTmp = { ...this.state.chartData };
 
             var row;
             for (row = 0; row < 8; row++) {
@@ -231,163 +230,155 @@ class FirstPart extends React.Component {
             //this.setChartData(chartDataTmp);
             service.updateChartData(chartDataTmp);
         })
-        .catch(function (e) {
-            console.warn("Error: Caught a network/db connection error!");
-            console.log(e);
-        })
+            .catch(function (e) {
+                console.warn("Error: Caught a network/db connection error!");
+                console.log(e);
+            })
 
-    //return series.payback;
-};
+        //return series.payback;
+    };
 
-checkOptimalDisplayValues(series, chartDataTmp) {
-  if (series.payback < service.data.chartData.Optimal.payback ||
-      (series.payback === service.data.chartData.Optimal.payback &&
-          series.system_cost < service.data.chartData.Optimal.system_cost)) {
-      this.setOptimalDisplayValues(series, chartDataTmp);
-      //console.log("Answer is true, replacing..")
-  }
-  else {
-      console.log("Answer is false, not replacing..")
-  }
+    checkOptimalDisplayValues(series, chartDataTmp) {
+        if (series.payback < service.data.chartData.Optimal.payback ||
+            (series.payback === service.data.chartData.Optimal.payback &&
+                series.system_cost < service.data.chartData.Optimal.system_cost)) {
+            this.setOptimalDisplayValues(series, chartDataTmp);
+            //console.log("Answer is true, replacing..")
+        }
+        else {
+            console.log("Answer is false, not replacing..")
+        }
 
-};
+    };
 
-setOptimalDisplayValues(series, chartDataTmp) {
-  var clientProfile = { ...this.state.clientProfile };
+    setOptimalDisplayValues(series, chartDataTmp) {
+        var clientProfile = { ...this.state.clientProfile };
 
-  // update description based on system type
-  if (series.system_type === "Selected EVPV") {
-      chartDataTmp.Optimal.system_type = "Solar+Plug-In Vehicle";
-  }
-  else if (series.system_type === "EV Rate Charging") {
-      chartDataTmp.Optimal.system_type = "Plug-In Vehicle";
-  }
-  else {
-      chartDataTmp.Optimal.system_type = series.system_type;
-  }
+        // update description based on system type
+        if (series.system_type === "Selected EVPV") {
+            chartDataTmp.Optimal.system_type = "Solar+Plug-In Vehicle";
+        }
+        else if (series.system_type === "EV Rate Charging") {
+            chartDataTmp.Optimal.system_type = "Plug-In Vehicle";
+        }
+        else {
+            chartDataTmp.Optimal.system_type = series.system_type;
+        }
 
-  chartDataTmp.Optimal.system_cost = series.system_cost;
-  chartDataTmp.Optimal.payback = series.payback;
-  chartDataTmp.Optimal.loan_payback = series.loan_payback;
-  if (series.payback >= 4) {
-      console.log("Sets optimal system type to loan . paybacks are" + series.payback + " : " + series.loan_payback);
-      chartDataTmp.Optimal.cashorloan = "Loan";
-      this.setOptimalPaymentType("Loan");
-  }
-  else {
-      chartDataTmp.Optimal.cashorloan = "Cash";
-      console.log("Sets optimal system type to cash . paybacks are" + series.payback + " : " + series.loan_payback);
-      this.setOptimalPaymentType("Cash");
-  }
+        chartDataTmp.Optimal.system_cost = series.system_cost;
+        chartDataTmp.Optimal.payback = series.payback;
+        chartDataTmp.Optimal.loan_payback = series.loan_payback;
+        if (series.payback >= 4) {
+            console.log("Sets optimal system type to loan . paybacks are" + series.payback + " : " + series.loan_payback);
+            chartDataTmp.Optimal.cashorloan = "Loan";
+            this.setOptimalPaymentType("Loan");
+        }
+        else {
+            chartDataTmp.Optimal.cashorloan = "Cash";
+            console.log("Sets optimal system type to cash . paybacks are" + series.payback + " : " + series.loan_payback);
+            this.setOptimalPaymentType("Cash");
+        }
 
-  chartDataTmp.Optimal.savingsAmount = series.savingsAmount;
-  chartDataTmp.Optimal.installFee = series.installFee;
-  chartDataTmp.Optimal.monthly_loan_pmt = series.monthly_loan_pmt;
-  this.setChartData(chartDataTmp);
-  // setting default client selection
-  clientProfile.selectedSystem.savingsAmount = series.savingsAmount;
-  clientProfile.selectedSystem.installFee = series.installFee;
-  clientProfile.selectedSystem.payback = series.payback;
-  clientProfile.selectedSystem.loan_payback = series.loan_payback;
-  clientProfile.selectedSystem.system_type = "N/A";
-  clientProfile.selectedSystem.paymentType = "N/A";
-  clientProfile.selectedSystem.monthly_loan_payment = series.monthly_loan_pmt;
-  clientProfile.selectedSystem.selectsSystem = false;
-  this.setState({ clientProfile });
-};
+        chartDataTmp.Optimal.savingsAmount = series.savingsAmount;
+        chartDataTmp.Optimal.installFee = series.installFee;
+        chartDataTmp.Optimal.monthly_loan_pmt = series.monthly_loan_pmt;
+        this.setChartData(chartDataTmp);
+        // setting default client selection
+        clientProfile.selectedSystem.savingsAmount = series.savingsAmount;
+        clientProfile.selectedSystem.installFee = series.installFee;
+        clientProfile.selectedSystem.payback = series.payback;
+        clientProfile.selectedSystem.loan_payback = series.loan_payback;
+        clientProfile.selectedSystem.system_type = "N/A";
+        clientProfile.selectedSystem.paymentType = "N/A";
+        clientProfile.selectedSystem.monthly_loan_payment = series.monthly_loan_pmt;
+        clientProfile.selectedSystem.selectsSystem = false;
+        this.setState({ clientProfile });
+    };
 
-setOptimalPaymentType = (cashorloan) => {
-  var chartDataTmp = { ...this.state.chartData };
-  chartDataTmp.Optimal.cashorloan = cashorloan;
-  this.setChartData(chartDataTmp);
-}
+    setOptimalPaymentType = (cashorloan) => {
+        var chartDataTmp = { ...this.state.chartData };
+        chartDataTmp.Optimal.cashorloan = cashorloan;
+        this.setChartData(chartDataTmp);
+    }
 
-setChartData = (data) => {
-  this.setState({ chartData: data });
-};
+    setChartData = (data) => {
+        this.setState({ chartData: data });
+    };
 
-  toggleModal() {
-    this.setState({
-      modal: !this.state.modal
-    });
-  }
+    toggleModal() {
+        this.setState({
+            modal: !this.state.modal
+        });
+    }
 
-  getSliderValue = () => {
-    var sliderHolder = document.getElementById("sliderHandle").innerText;
-    // console.log("slider holder is: "+sliderHolder);
-    var sliderValue = Number(sliderHolder.replace(/[^\d]/g, ""));
-    console.log("slider value is: "+sliderValue);
+    getSliderValue = () => {
+        var sliderHolder = document.getElementById("sliderHandle").innerText;
+        // console.log("slider holder is: "+sliderHolder);
+        var sliderValue = Number(sliderHolder.replace(/[^\d]/g, ""));
+        console.log("slider value is: " + sliderValue);
 
-    return sliderValue;
-    //return this.props.monthlyBill;
-  };
+        return sliderValue;
+        //return this.props.monthlyBill;
+    };
 
-  handleSliderChange = (monthlyBill) => {
-    this.getChartData(monthlyBill);
-    //this.props.getChartData(monthlyBill);
-    service.selectedSystemUpdater("Optimal");  
-    
-    service.billUpdater(monthlyBill);
-    this.determineLightBoxPopup();
-    //this.props.showAllParts();
-    service.showAllParts();
-}
+    handleSliderChange = (monthlyBill) => {
+        this.getChartData(monthlyBill);
+        //this.props.getChartData(monthlyBill);
+        service.selectedSystemUpdater("Optimal");
 
-determineLightBoxPopup = () => {
-  // console.log("Actually comes in here ");
-  if (!this.state.lightboxDisplayed) {
-      service.toggleLightBox();
-  }
-  this.setState({lightboxDisplayed: true})
-}
+        service.billUpdater(monthlyBill);
+        this.determineLightBoxPopup();
+        //this.props.showAllParts();
+        service.showAllParts();
+    }
 
-  render() {
-    return (
-<div className={`FirstPart ${service.data.showFirstPart.hidden}`}>
-<div className="App">
-    <div className="wrapper">
-        <div className="header ev" style={{ backgroundImage: this.props.campaign.BackgroundImage }}>
-            <div className="container">
-                <div className="header-container">
-                    <div className="outer">
-                        <div className="inner text-center mcText mt-2">
-                            <h1 className="mctUpper semiBold">{this.props.campaign.OverlayText}</h1>
-                            <h2 className="mctLower semiBold">See how much you can save.</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <section className="slider-section">
-            <div className="row">
-                <div className='col-md-8 offset-md-2 col-sm-8 offset-sm-2 col-xs-10 offset-xs-1'>
-                    <div className="mcSlider">
-                        <p className='text-center regular sliderText responsive-sliderText'>What's your monthly electric bill?</p>
-                        <div className='slider'>
-                            <MakelloSlider
-                                showTooltip={this.state.showTooltip}
-                                className="makelloSlider"
-                                min={min_slider_value}
-                                max={max_slider_value}
-                                step={slider_increment_step}
-                                value={this.state.clientProfile.monthlyBill}
-                                onMouseUp={this.handleSliderChange}
-                                monthlyBill={this.state.clientProfile.monthlyBill} />
-                        </div>
-                        <div className="bottomInputs">
-                            <div className="row">
-                                <div className="col-md-6 offset-md-3">
+    determineLightBoxPopup = () => {
+        // console.log("Actually comes in here ");
+        if (!this.state.lightboxDisplayed) {
+            service.toggleLightBox();
+        }
+        this.setState({ lightboxDisplayed: true })
+    }
+
+    render() {
+        return (
+            <div className={`FirstPart ${service.data.showFirstPart.hidden}`}>
+                <div className="App">
+                    <div className="wrapper">
+                        <div className="header ev" style={{ backgroundImage: this.props.campaign.BackgroundImage }}>
+                            <div className="container">
+                                <div className="header-container">
+                                    <div className="outer">
+                                        <div className="inner text-center mcText mt-2">
+                                            <h1 className="mctUpper semiBold">{this.props.campaign.OverlayText}</h1>
+                                            <h2 className="mctLower semiBold">See how much you can save.</h2>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <section className="slider-section">
+                            <div className="row">
+                                <div className='col-md-8 offset-md-2 col-sm-8 offset-sm-2 col-xs-10 offset-xs-1'>
+                                    <div className="mcSlider">
+                                        <p className='text-center regular sliderText responsive-sliderText'>What's your monthly electric bill?</p>
+                                        <div className='slider'>
+
+                                        </div>
+                                        <div className="bottomInputs">
+                                            <div className="row">
+                                                <div className="col-md-6 offset-md-3">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
                     </div>
                 </div>
-            </div>
-        </section>
-    </div>
-</div>
-</div>);
-  }
+            </div>);
+    }
 }
 
 export default FirstPart;

@@ -5,7 +5,7 @@ var pg = require('pg');
 const cors = require("cors");
 // var bodyParser = require('body-parser')
 
-var sendEmails  = require('./api/nodeEmails.js');
+var sendEmails = require('./api/nodeEmails.js');
 require("dotenv").config();
 var request = require('./api/vonage/request.js');
 var verify = require('./api/vonage/verify.js');
@@ -13,44 +13,44 @@ var cancel = require('./api/vonage/cancel.js');
 
 // amazzon s3 storage config
 var config = {
-    host: 'ec2-54-225-107-174.compute-1.amazonaws.com',
-    user: 'kdybyyzmkneukt',
-    database: 'db1c9f93sqh3e3',
-    password: '617bbd402bbebce800141115595154c915710ae84141f29ee8726f7f7c9e5a9e',
-    port: 5432
+  host: 'ec2-54-225-107-174.compute-1.amazonaws.com',
+  user: 'kdybyyzmkneukt',
+  database: 'db1c9f93sqh3e3',
+  password: '617bbd402bbebce800141115595154c915710ae84141f29ee8726f7f7c9e5a9e',
+  port: 5432
 };
 
-var app =express();
+var app = express();
 
 app.use(cors());
 // app.use(bodyParser.json())
 app.use(express.json());
 
-console.log(sendEmails); 
+console.log(sendEmails);
 
 app.post('/api/nodeEmails', sendEmails.sendAdminEmail, sendEmails.sendCustomerEmail);
 
 app.get('/*', function (req, res, next) {
-    // console.log("Comes in general application star get test if url requires image or")
-    if (req.url.indexOf("/images/") === 0 || req.url.indexOf("/stylesheets/") === 0) {
-      res.setHeader("Cache-Control", "public, max-age=2592000");
-      res.setHeader("Expires", new Date(Date.now() + 2592000000).toUTCString());
-    }
-    next();
-  });
+  // console.log("Comes in general application star get test if url requires image or")
+  if (req.url.indexOf("/images/") === 0 || req.url.indexOf("/stylesheets/") === 0) {
+    res.setHeader("Cache-Control", "public, max-age=2592000");
+    res.setHeader("Expires", new Date(Date.now() + 2592000000).toUTCString());
+  }
+  next();
+});
 
-  app.post('/api/vonage/request', request.request);
-  app.post('/api/vonage/verify',  verify.verify);
-  app.post('/api/vonage/cancel',  cancel.cancel);
-  // app.post('/api/vonage/request', request);
-  // app.post('/api/vonage/verify', verify);
-  // app.post('/api/vonage/cancel', cancel);
+app.post('/api/vonage/request', request.request);
+app.post('/api/vonage/verify', verify.verify);
+app.post('/api/vonage/cancel', cancel.cancel);
+// app.post('/api/vonage/request', request);
+// app.post('/api/vonage/verify', verify);
+// app.post('/api/vonage/cancel', cancel);
 
 app.use(express.static(__dirname + '/public', {
-    maxAge: 86400000,
-    setHeaders: function(res, path) {
-        res.setHeader("Expires", new Date(Date.now() + 2592000000*30).toUTCString());
-        }
+  maxAge: 86400000,
+  setHeaders: function (res, path) {
+    res.setHeader("Expires", new Date(Date.now() + 2592000000 * 30).toUTCString());
+  }
 }))
 
 app.use(express.static(path.join(__dirname, 'public_html'))).listen(PORT, function () {
