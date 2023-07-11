@@ -2952,7 +2952,7 @@ body.sticky-nav-on .dusk-header {
 	top: 0;
 	left: 0;
 	width: 100%;
-	background-color: #FAFAFA
+	background-color: #fff
 }
 .dusk-header::after {
 	position: absolute;

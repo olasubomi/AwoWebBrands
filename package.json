@@ -3,7 +3,7 @@
   "version": "0.3.0",
   "description": "website to showcase some of the skills I am learning over the next few months",
   "engines": {
-    "node": "16.x"
+    "node": "18.x"
   },
   "main": "index.js",
   "scripts": {

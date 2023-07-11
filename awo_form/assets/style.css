@@ -2951,7 +2951,7 @@ body.sticky-nav-on .dusk-header {
 	top: 0;
 	left: 0;
 	width: 100%;
-	background-color: #FAFAFA
+	background-color: #fff
 }
 .dusk-header::after {
 	position: absolute;
@@ -3533,7 +3533,7 @@ p {
 .footer-wrap {
 	width: 100%;
 	border-top: 1px solid #e5e5e5;
-	background-color: #fafafa
+	background-color: #fff
 }
 .footer-wrap .wsite-footer {
 	max-width: 100%;

@@ -1,0 +1,12 @@
+Images for homepage are stored online at:
+http://www.cincopa.com/media-platform/wizard2/library15
+The cincopa log in is via my personal gmail
+
+
+To copy files from this directory to a local directory:
+
+scp -r oawokoya@acsweb.ucsd.edu:~oawokoya/public Documents/projects/personal_website
+
+
+Find each occurrence of 'foo' (in all lines), and replace it with 'bar':
+:%s/foo/bar/g
