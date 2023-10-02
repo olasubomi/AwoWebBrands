@@ -4413,7 +4413,17 @@ div.paragraph {
 p {
     line-height: 2;
     margin: 0 auto 25px
+   
 }
+
+.paragraph, a {
+    color: rgb(255, 255, 255);
+  }
+
+.paragraph,
+a:hover {
+    color: rgba(182, 182, 178, 0.856);
+  }
 
 .header-page .wsite-header-section {
     height: 0
