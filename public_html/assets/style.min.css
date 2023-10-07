@@ -3258,7 +3258,7 @@ hr.styled-hr {
     margin: 0 !important;
     border: 0 !important;
     padding: 0;
-    -moz-box-sizing: border-box
+    /* -moz-box-sizing: border-box */
 }
 
 .wsite-footer {
@@ -3656,8 +3656,8 @@ a {
 }
 
 a:hover {
-    color: #f5a623;
-    text-decoration: none
+    color: #ffffff;
+    text-decoration: underline
 }
 
 a img {
@@ -4412,17 +4412,18 @@ div.paragraph {
 .paragraph,
 p {
     line-height: 2;
-    margin: 0 auto 25px
+    margin: 0 auto 5px
    
 }
 
 .paragraph, a {
     color: rgb(255, 255, 255);
+    text-decoration: none;
   }
-
-.paragraph,
-a:hover {
-    color: #fff000;
+p:hover, a:hover {
+   
+   text-decoration: underline;
+   text-decoration-color: white;
   }
 
 .header-page .wsite-header-section {
@@ -5065,13 +5066,13 @@ a.back-to-top {
 .grid .col-1 {
     width: 60%;
     display: inline-block;
-    float: left
+    /* float: left */
 }
 
 .grid .col-2 {
     width: 40%;
     display: inline-block;
-    float: left
+    /* float: left */
 }
 
 .visible-xs {
