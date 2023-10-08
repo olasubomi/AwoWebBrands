@@ -3649,7 +3649,7 @@ body {
 }
 
 a {
-    color: #4f4f4e;
+    /* color: #4f4f4e; */
     text-decoration: none;
     font-weight: 600;
     letter-spacing: .09375em
